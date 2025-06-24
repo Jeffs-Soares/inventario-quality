@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Local extends Model
 {
-    use HasFactory;
+
     public $timestamps = false;
     protected $table = 'local';
     protected $primarykey = 'id';
@@ -14,6 +14,7 @@ class Local extends Model
     protected $fillable = [
         'loc_descricao'
     ];
+
 
      public function belongsRegistro()
     {
