@@ -30,7 +30,7 @@
 
         <button type="submit">Store</button>
 
-        <a href="{{route('local.index')}}">Cancel</a>
+        <a href="{{('/')}}">Cancel</a>
 
     </form>
 

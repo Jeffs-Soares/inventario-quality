@@ -9,7 +9,7 @@ use App\Http\Controllers\LocalController;
 
 
 Route::get('/', function(){
-return view ('local.create');
+return view ('welcome');
 });
 
 

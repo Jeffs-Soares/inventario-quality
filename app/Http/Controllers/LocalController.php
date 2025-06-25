@@ -10,49 +10,56 @@ class LocalController extends Controller
 
     public function index()
     {
+        $locais = Local::all();
+
+        return view('local.index')->with('locais', $locais);
 
     }
 
     public function create()
     {
-
         return view('local.create');
-
     }
 
 
-    public function store(Request $request)
+    public function store(Request $request, Local $local)
     {
-    
-        $item = new Local();
-        $item->loc_descricao =  $request['loc_descricao'];
+        $item = $local;
+        $local->fill($request->all());
         $item->save();
 
-        return 'Ok';
+        return redirect(route('local.index'));
+    }
+
+
+    public function show(Local $local)
+    {
+        return view('local.show')->with('local', $local);
+    }
+
+
+
+    public function edit(Local $local)
+    {
+        return view('local.edit')->with('local', $local);
+    }
+
+
+    public function update(Request $request, Local $local)
+    {
+        $local->fill($request->all());
+        $local->save();
+
+        return redirect(route('local.index'));
 
     }
 
 
-    public function show(string $id)
+    public function destroy(Local $local)
     {
+        $local->delete();
 
-    }
-
-
-    public function edit(string $id)
-    {
-
-    }
-
-
-    public function update(Request $request, string $id)
-    {
-
-    }
-
-
-    public function destroy(string $id)
-    {
+        return redirect(route('local.index'));
 
     }
 }
