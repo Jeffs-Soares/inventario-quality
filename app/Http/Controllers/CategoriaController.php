@@ -54,7 +54,6 @@ class CategoriaController extends Controller
         return redirect(route('categoria.index'));
     }
 
-
     public function destroy(Categoria $categorium)
     {
       
