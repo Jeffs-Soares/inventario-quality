@@ -7,3 +7,5 @@
 <a href="{{route('categoria.index')}}"> Categorias </a>
 <br>
 <a href="{{route('item.index')}}"> Items </a>
+<br>
+<a href="{{route('registro.index')}}"> Registro </a>
