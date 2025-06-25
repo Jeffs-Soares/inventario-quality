@@ -1,15 +1,14 @@
 <div>
-    <h1> Local Create </h1>
+    <h1> Categoria Create </h1>
 
 
-
-     <form  action="{{ route('local.store') }}" method="post">
+     <form  action="{{ route('categoria.store') }}" method="post">
         @csrf
         @method('post')
 
         <div>
             <label for="name" > Descrição </label>
-            <input type="text" id="loc_descricao" name="loc_descricao" >
+            <input type="text" id="cat_descricao" name="cat_descricao" >
         </div>
 
 
@@ -35,3 +34,4 @@
     </form>
 
 </div>
+

@@ -13,7 +13,6 @@ class LocalController extends Controller
         $locais = Local::all();
 
         return view('local.index')->with('locais', $locais);
-
     }
 
     public function create()
@@ -24,9 +23,9 @@ class LocalController extends Controller
 
     public function store(Request $request, Local $local)
     {
-        $item = $local;
+        
         $local->fill($request->all());
-        $item->save();
+        $local->save();
 
         return redirect(route('local.index'));
     }
@@ -51,7 +50,6 @@ class LocalController extends Controller
         $local->save();
 
         return redirect(route('local.index'));
-
     }
 
 
@@ -60,6 +58,5 @@ class LocalController extends Controller
         $local->delete();
 
         return redirect(route('local.index'));
-
     }
 }

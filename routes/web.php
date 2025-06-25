@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CategoriaController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LocalController;
 
@@ -14,3 +15,4 @@ return view ('welcome');
 
 
 Route::resource('local', LocalController::class);
+Route::resource('categoria', CategoriaController::class);

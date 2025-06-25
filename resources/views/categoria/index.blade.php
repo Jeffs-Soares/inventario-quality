@@ -1,12 +1,12 @@
 <div>
-    <h1> Local </h1>
+    <h1 > Categoria </h1>
 
     <div>
         <table>
             <thead>
             <tr>
                 <th scope="col">
-                    Nome do Local
+                    Nome da Categoria
                 </th>
                 <th scope="col">
                      ID
@@ -18,20 +18,20 @@
             </thead>
             <tbody>
 
-    @foreach($locais as $local)
+    @foreach($categorias as $categoria)
 
                     <tr>
                         <th scope="row">
-                            <a href="{{ route('local.show', $local->id) }}">{{ $local-> loc_descricao }}</a>
+                            <a href="{{ route('categoria.show', $categoria->id) }}">{{ $categoria-> cat_descricao }}</a>
                         </th>
                         <td >
-                            {{$local->id}}
+                            {{$categoria->id}}
                         </td>
 
                         <td>
-                            <a href="{{ route('local.edit', $local->id) }}"> Edit </a>
+                            <a href="{{ route('categoria.edit', $categoria->id) }}"> Edit </a>
 
-                            <form action="{{ route('local.destroy', $local->id) }}" method="post">
+                            <form action="{{ route('categoria.destroy', $categoria->id) }}" method="post">
                                 @csrf
                                 @method('delete')
                                 <button type="submit"> Delete </button>
@@ -43,7 +43,7 @@
         </table>
     </div>
 
-    <a href="{{ route('local.create') }}"> Store </a>
+    <a href="{{ route('categoria.create') }}"> Store </a>
     <br>
     <a href="{{('/')}}">Cancel</a>
 

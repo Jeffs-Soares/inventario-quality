@@ -16,7 +16,7 @@ class Local extends Model
     ];
 
 
-     public function belongsRegistro()
+    public function belongsRegistro()
     {
         return $this->belongsTo(Registro::class);
     }
