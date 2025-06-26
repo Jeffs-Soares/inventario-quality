@@ -57,7 +57,7 @@
 
             <tr>
                 <td>
-                    <a href="{{ route('registro.show', $registro->id) }}"> {{ $registro->id }}</a>
+                     {{ $registro->id }}
                 </td>
 
                 <td>

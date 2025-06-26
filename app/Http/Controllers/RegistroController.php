@@ -38,20 +38,27 @@ class RegistroController extends Controller
     }
 
    
-    public function edit(string $id)
+    public function edit(Registro $registro)
     {
-        
+        return view('registro.edit')->with('registro', $registro)
+            ->with('locais', Local::all())
+            ->with('categorias', Categoria::all())
+            ->with('items', Item::all());
     }
 
     
-    public function update(Request $request, string $id)
+    public function update(Request $request, Registro $registro)
     {
-        
+        $registro->fill($request->all());
+        $registro->save();
+
+        return redirect(route('registro.index'));
     }
 
     
-    public function destroy(string $id)
+    public function destroy(Registro $registro)
     {
-        
+        $registro->delete();
+        return redirect(route('registro.index'));
     }
 }
