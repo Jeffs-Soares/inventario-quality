@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Categoria;
+use App\Models\Registro;
 
 class CategoriaController extends Controller
 {
@@ -56,6 +57,9 @@ class CategoriaController extends Controller
 
     public function destroy(Categoria $categorium)
     {
+        if (Registro::where('categoria', $categorium->id)->exists()) {
+            return redirect(route('categoria.index'));
+        }
       
         $categorium->delete();
 

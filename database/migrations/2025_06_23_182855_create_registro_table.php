@@ -15,13 +15,13 @@ return new class extends Migration
             $table->bigIncrements('id');
             $table->unsignedBigInteger('categoria')->nullable(false);
             $table->unsignedBigInteger('item')->nullable(false);
-            $table->string('nota_fiscal', 128);
+            $table->string('nota_fiscal', 128)->nullable(true);
             $table->date('data_aquisicao');
             $table->unsignedBigInteger('local')->nullable(false);
-            $table->string('serial', 128);
-            $table->string('modelo', 128);
-            $table->string('marca', 128);
-            $table->string('observacao');
+            $table->string('serial', 128)->nullable(true);
+            $table->string('modelo', 128)->nullable(true);
+            $table->string('marca', 128)->nullable(true);
+            $table->string('observacao')->nullable(true);
 
              $table->foreign('categoria')->references('id')
                 ->on('categoria')

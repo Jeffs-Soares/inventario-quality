@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Item;
+use App\Models\Registro;
 use Illuminate\Http\Request;
 
 class ItemController extends Controller
@@ -54,6 +55,10 @@ class ItemController extends Controller
    
     public function destroy(Item $item)
     {
+        if (Registro::where('item', $item->id)->exists()) {
+            return redirect(route('item.index'));
+        }
+        
         $item->delete();
         return redirect(route('item.index'));
     }

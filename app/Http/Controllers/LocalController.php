@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Local;
+use App\Models\Registro;
 
 class LocalController extends Controller
 {
@@ -55,6 +56,11 @@ class LocalController extends Controller
 
     public function destroy(Local $local)
     {
+
+        if (Registro::where('local', $local->id)->exists()) {
+            return redirect(route('local.index'));
+        }
+        
         $local->delete();
 
         return redirect(route('local.index'));
