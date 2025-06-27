@@ -6,15 +6,10 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LocalController;
 use App\Http\Controllers\RegistroController;
 
-//Route::get('/', function () {
-//    return view('welcome');
-//});
-
 
 Route::get('/', function(){
-return view ('welcome');
+return redirect(route('registro.index'));
 });
-
 
 Route::resource('local', LocalController::class);
 Route::resource('categoria', CategoriaController::class);
