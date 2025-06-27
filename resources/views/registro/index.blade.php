@@ -99,37 +99,37 @@
         <table class="min-w-full divide-y divide-gray-200">
             <thead class="bg-gray-50">
                 <tr>
-                    <th scope="col" class="px-3 py-3 text-left text-xs sm:text-sm font-medium text-gray-500 tracking-wider">
+                    <th scope="col" class="px-3 py-3 text-left text-xs sm:text-sm font-medium text-gray-500 uppercase tracking-wider">
                         ID
                     </th>
-                    <th scope="col" class="px-3 py-3 text-left text-xs sm:text-sm font-medium text-gray-500 tracking-wider">
+                    <th scope="col" class="px-3 py-3 text-left text-xs sm:text-sm font-medium text-gray-500 uppercase tracking-wider">
                         Categoria
                     </th>
-                    <th scope="col" class="px-3 py-3 text-left text-xs sm:text-sm font-medium text-gray-500 tracking-wider">
+                    <th scope="col" class="px-3 py-3 text-left text-xs sm:text-sm font-medium text-gray-500 uppercase tracking-wider">
                         Item
                     </th>
-                    <th scope="col" class="px-3 py-3 text-left text-xs sm:text-sm font-medium text-gray-500 tracking-wider">
+                    <th scope="col" class="px-3 py-3 text-left text-xs sm:text-sm font-medium text-gray-500 uppercase tracking-wider">
                         Nota Fiscal
                     </th>
-                    <th scope="col" class="px-3 py-3 text-left text-xs sm:text-sm font-medium text-gray-500 tracking-wider">
+                    <th scope="col" class="px-3 py-3 text-left text-xs sm:text-sm font-medium text-gray-500 uppercase tracking-wider">
                         Data da Aquisição
                     </th>
-                    <th scope="col" class="px-3 py-3 text-left text-xs sm:text-sm font-medium text-gray-500 tracking-wider">
+                    <th scope="col" class="px-3 py-3 text-left text-xs sm:text-sm font-medium text-gray-500 uppercase tracking-wider">
                         Local
                     </th>
-                    <th scope="col" class="px-3 py-3 text-left text-xs sm:text-sm font-medium text-gray-500 tracking-wider">
+                    <th scope="col" class="px-3 py-3 text-left text-xs sm:text-sm font-medium text-gray-500 uppercase tracking-wider">
                         Serial
                     </th>
-                    <th scope="col" class="px-3 py-3 text-left text-xs sm:text-sm font-medium text-gray-500 tracking-wider">
+                    <th scope="col" class="px-3 py-3 text-left text-xs sm:text-sm font-medium text-gray-500 uppercase tracking-wider">
                         Modelo
                     </th>
-                    <th scope="col" class="px-3 py-3 text-left text-xs sm:text-sm font-medium text-gray-500 tracking-wider">
+                    <th scope="col" class="px-3 py-3 text-left text-xs sm:text-sm font-medium text-gray-500 uppercase tracking-wider">
                         Marca
                     </th>
-                    <th scope="col" class="px-3 py-3 text-left text-xs sm:text-sm font-medium text-gray-500 tracking-wider">
+                    <th scope="col" class="px-3 py-3 text-left text-xs sm:text-sm font-medium text-gray-500 uppercase tracking-wider">
                         Observação
                     </th>
-                    <th scope="col" class="px-3 py-3 text-xs sm:text-sm font-medium text-gray-500 tracking-wider">
+                    <th scope="col" class="px-3 py-3 text-xs sm:text-sm font-medium text-gray-500 uppercase tracking-wider">
                         Ação
                     </th>
                 </tr>

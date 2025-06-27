@@ -95,75 +95,68 @@
 </div>
 </header>
 
-<main class="flex-1 p-2">
+<main class="flex-1 p-4 sm:p-6 lg:p-8 overflow-y-auto">
+                <div class="bg-white shadow-md rounded-lg overflow-hidden">
+                    <div class="overflow-x-auto">
+                        <table class="min-w-full divide-y divide-gray-200">
+                            <thead class="bg-gray-50">
+                                <tr>
+                                    <th scope="col" class="px-3 py-3 text-left text-xs sm:text-sm font-medium text-gray-500 uppercase tracking-wider">
+                                        ID
+                                    </th>
+                                    <th scope="col" class="px-3 py-3 text-left text-xs sm:text-sm font-medium text-gray-500 uppercase tracking-wider">
+                                        Item
+                                    </th>
+                                    <th scope="col" class="px-3 py-3 text-left text-xs sm:text-sm font-medium text-gray-500 uppercase tracking-wider">
+                                        Ação
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody class="bg-white divide-y divide-gray-200">
+                                @foreach($items as $item)
+                                    <tr>
+                                        <td class="px-3 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
+                                            {{ $item->id }}
+                                        </td>
+                                        <td class="px-3 py-4 whitespace-nowrap text-sm text-gray-500">
+                                            {{ $item->item_descricao }}
+                                        </td>
+                                        <td class="px-3 py-4 whitespace-nowrap text-right text-sm font-medium flex items-center space-x-2">
+                                            <a href="{{ route('item.edit', $item->id) }}" class="text-indigo-600 hover:text-indigo-900">Editar</a>
+                                            <form action="{{ route('item.destroy', $item->id) }}" method="post" class="inline-block">
+                                                @csrf
+                                                @method('delete')
+                                                <button type="submit" onclick="return confirm('Tem certeza que deseja excluir?')" class="text-red-600 hover:text-red-900"> Delete </button>
+                                            </form>
+                                        </td>
+                                    </tr>
+                                @endforeach
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
 
-<table class="min-w-full divide-y divide-gray-200">
-    <thead class="bg-gray-50">
-        <tr>
-            <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                ID
-            </th>
-            <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                Item
-            </th>
-            <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                Ação
-            </th>
-        </tr>
-    </thead>
-    <tbody class="bg-white divide-y divide-gray-200">
-        @foreach($items as $item)
-            <tr>
-                <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-500">
-                     {{ $item->id }}
-                </td>
+                @if($errors->any())
+                    <div class="mt-4 p-4 bg-red-100 border border-red-400 text-red-700 rounded-md" role="alert">
+                        <ul class="list-disc pl-5">
+                            @foreach($errors->all() as $error)
+                                <li>
+                                    {{ $error }}
+                                </li>
+                            @endforeach
+                        </ul>
+                    </div>
+                @endif
 
-                <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-500">
-                     {{ $item->item_descricao }}
-                </td>
-
- 
-                <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium flex">
-                    <a href="{{ route('item.edit', $item->id) }}" class="text-indigo-600 hover:text-indigo-900 mr-2">Editar</a>
-                    <form action="{{ route('item.destroy', $item->id) }}" method="post" class="inline-block">
-                        @csrf
-                        @method('delete')
-                        <button type="submit" onclick="return confirm('Tem certeza que deseja excluir?')" class="text-red-600 hover:text-red-900"> Delete </button>
-                    </form>
-                </td>
-            </tr>
-        @endforeach
-    </tbody>
-</table>
-  
-       
- @if($errors->any())
-            <div>
-                <ul>
-                    @foreach($errors->all() as $error)
-                        <li>
-                            <div role="alert">
-                                {{ $error }}
-                            </div>
-                        </li>
-                    @endforeach
-                </ul>
-            </div>
-        @endif
-
-        <div class="flex mt-4">
-            
-            <a class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm  me-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800 px-4 py-2" href="{{route('item.create')}}"> Store </a>
-
-            <a href="{{('/')}}" class="text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm me-2 mb-2 dark:bg-red-600 dark:hover:bg-red-700 focus:outline-none dark:focus:ring-red-800 px-4 py-2"> Cancel </a>
-
- 
-  
-
-        </div>
-    </form>
-</div>
-</main>
+                <div class="flex flex-col sm:flex-row mt-4 gap-2">
+                    <a class="w-full sm:w-auto text-center text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800" href="{{route('item.create')}}">
+                        Store
+                    </a>
+                    <a href="{{('/')}}" class="w-full sm:w-auto text-center text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 dark:bg-red-600 dark:hover:bg-red-700 focus:outline-none dark:focus:ring-red-800">
+                        Cancel
+                    </a>
+                </div>
+            </main>
 </div>
 </div>
 </body>
