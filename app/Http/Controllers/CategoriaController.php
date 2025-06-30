@@ -2,8 +2,7 @@
 
 namespace App\Http\Controllers;
 
-
-use Illuminate\Http\Request;
+use App\Http\Requests\CategoriaRequest;
 use App\Models\Categoria;
 use App\Models\Registro;
 
@@ -24,10 +23,10 @@ class CategoriaController extends Controller
     }
 
   
-    public function store(Request $request, Categoria $categoria)
+    public function store(CategoriaRequest $request, Categoria $categoria)
     {
        
-        $categoria->fill($request->all());
+        $categoria->fill($request->validated());
         $categoria->save();
 
         return redirect(route('categoria.index'));
@@ -47,9 +46,9 @@ class CategoriaController extends Controller
     }
 
 
-    public function update(Request $request, Categoria $categorium)
+    public function update(CategoriaRequest $request, Categoria $categorium)
     {
-        $categorium->fill($request->all());
+        $categorium->fill($request->validated());
         $categorium->save();
 
         return redirect(route('categoria.index'));

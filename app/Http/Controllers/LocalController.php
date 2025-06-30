@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\LocalRequest;
 use Illuminate\Http\Request;
 use App\Models\Local;
 use App\Models\Registro;
@@ -22,10 +23,10 @@ class LocalController extends Controller
     }
 
 
-    public function store(Request $request, Local $local)
+    public function store(LocalRequest $request, Local $local)
     {
         
-        $local->fill($request->all());
+        $local->fill($request->validated());
         $local->save();
 
         return redirect(route('local.index'));
@@ -45,9 +46,9 @@ class LocalController extends Controller
     }
 
 
-    public function update(Request $request, Local $local)
+    public function update(LocalRequest $request, Local $local)
     {
-        $local->fill($request->all());
+        $local->fill($request->validated());
         $local->save();
 
         return redirect(route('local.index'));

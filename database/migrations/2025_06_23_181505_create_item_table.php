@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('item', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('item_descricao', 128)->nullable(false);
+            $table->string('item_descricao', 128)->nullable(true);
         });
 
       
