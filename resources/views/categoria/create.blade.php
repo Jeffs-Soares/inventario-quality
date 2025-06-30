@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="pt-BR"><head>
 <meta charset="utf-8"/>
@@ -33,7 +34,7 @@
 </div>
 <nav class="flex-grow">
 <div class="p-4">
-<h3 class="text-xs uppercase text-gray-400 font-semibold mb-2">Menu</h3>
+<h3 class="text-xs uppercase text-gray-600 font-semibold mb-2">Menu</h3>
 <ul>
 
 <li class="sidebar-item rounded-md">
@@ -94,43 +95,43 @@
 </div>
 </div>
 </header>
-<main class="flex-1 p-6">
+<main class="flex-1 p-4 sm:p-6 lg:p-8">
+   <div class="max-w-4xl mx-auto bg-white p-6 rounded-lg shadow-md mt-8">
+        <h1 class="text-2xl sm:text-3xl font-bold text-gray-900 mb-6">Criar Categoria</h1>
 
-<h1 class="text-2xl font-semibold text-gray-800 mb-2"> Categorias </h1>
-<div class="bg-white p-6 rounded-lg shadow-md">
-<h2 class="text-xl font-semibold text-gray-700 mb-6">Edição - Categoria</h2>
-<form action="{{ route('categoria.store') }}" method="post">
-     @csrf
-     @method('post')
+        <form action="{{ route('categoria.store') }}" method="post" class="space-y-6">
+            @csrf
+            @method('post')
 
-
-<div class="col-span-1">
-<label class="block text-sm font-medium text-gray-700 mb-1" for="name">Descrição</label>
-<input class="w-full p-2 border border-gray-300 rounded-md shadow-sm bg-gray-100 focus:ring-blue-500 focus:border-blue-500" name="cat_descricao" id="cat_descricao" type="text" required/>
-</div>
-
-
-
- @if($errors->any())
             <div>
-                <ul>
-                    @foreach($errors->all() as $error)
-                        <li>
-                            <div role="alert">
-                                {{ $error }}
-                            </div>
-                        </li>
-                    @endforeach
-                </ul>
+                <label for="name" class="block text-sm font-medium text-gray-700 mb-1">Descrição</label>
+                <input type="text" id="cat_descricao" name="cat_descricao"
+                       class="mt-1 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md focus:ring-indigo-500 focus:border-indigo-500 p-2">
             </div>
-        @endif
 
-        <div class="flex mt-4">
-            <button type="submit" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm  me-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800 px-4 py-2"> Store </button>
-            <a href="{{('/')}}" class="text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm me-2 mb-2 dark:bg-red-600 dark:hover:bg-red-700 focus:outline-none dark:focus:ring-red-800 px-4 py-2"> Cancel </a>
-        </div>
-    </form>
-</div>
+
+            @if($errors->any())
+                <div class="mt-4 p-4 bg-red-100 border border-red-400 text-red-700 rounded-md" role="alert">
+                    <ul class="list-disc pl-5">
+                        @foreach($errors->all() as $error)
+                            <li>
+                                {{ $error }}
+                            </li>
+                        @endforeach
+                    </ul>
+                </div>
+            @endif
+
+            <div class="flex flex-col sm:flex-row mt-6 gap-2">
+                <button type="submit" class="w-full sm:w-auto text-center text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">
+                    Store
+                </button>
+                <a href="{{route('categoria.index')}}" class="w-full sm:w-auto text-center text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 dark:bg-red-600 dark:hover:bg-red-700 focus:outline-none dark:focus:ring-red-800">
+                    Cancel
+                </a>
+            </div>
+        </form>
+    </div>
 </main>
 </div>
 </div>
