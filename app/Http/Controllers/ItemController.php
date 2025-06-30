@@ -27,10 +27,22 @@ class ItemController extends Controller
 
     public function store(ItemRequest $request, Item $item)
     {
-        $item->fill($request->validated());
-        $item->save();
+        try {
+            $item->fill($request->validated());
+            $item->save();
 
-        return redirect(route('item.index'));
+            return redirect(route('item.index'))->with('success', 'Item cadastrado com sucesso!');
+        } catch (Exception $e) {
+
+            Log::error("Erro ao cadastrar o item ID {$item->id}: " . $e->getMessage(), [
+                'item_id' => $item->id,
+                'request_data' => $request->validated(),
+                'exception' => $e
+            ]);
+
+            // Redireciona com uma mensagem de erro
+            return redirect()->back()->withInput()->with('error', 'Ocorreu um erro ao cadastrar o item. Tente novamente.');
+        }
     }
 
 
