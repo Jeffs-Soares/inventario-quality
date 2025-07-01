@@ -81,11 +81,20 @@ class ItemController extends Controller
 
     public function destroy(Item $item)
     {
+        // Verifica se existem registros associados a este item
         if (Registro::where('item', $item->id)->exists()) {
-            return redirect(route('item.index'));
+            return redirect()
+                ->route('local.index')
+                ->with('error', 'Não é possível excluir o item, pois existem registros associados a ele.');
         }
 
-        $item->delete();
-        return redirect(route('item.index'));
+        // Se não houver registros, tenta excluir o item
+        try {
+            $item->delete();
+            return redirect()->route('item.index')->with('success', 'Item excluído com sucesso!');
+        } catch (Exception $e) {
+            // Captura qualquer exceção que possa ocorrer durante a exclusão
+            return redirect()->route('item.index')->with('error', 'Ocorreu um erro ao tentar excluir o Item: ' . $e->getMessage());
+        }
     }
 }
