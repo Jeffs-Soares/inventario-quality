@@ -83,9 +83,7 @@ class ItemController extends Controller
     {
         // Verifica se existem registros associados a este item
         if (Registro::where('item', $item->id)->exists()) {
-            return redirect()
-                ->route('local.index')
-                ->with('error', 'Não é possível excluir o item, pois existem registros associados a ele.');
+            return redirect()->route('item.index')->with('error', 'Não é possível excluir o item, pois existem registros associados a ele.');
         }
 
         // Se não houver registros, tenta excluir o item
