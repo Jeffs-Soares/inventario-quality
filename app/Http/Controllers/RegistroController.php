@@ -13,10 +13,10 @@ use Illuminate\Support\Facades\Log;
 class RegistroController extends Controller
 {
 
-    public function index()
+    public function index(Request $request)
     {
         $registros = Registro::all();
-        return view('registro.index')->with('registros', $registros);
+        return view('registro.index')->with('registros', $registros)->with('path', $request->path());
     }
 
 

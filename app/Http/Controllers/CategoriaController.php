@@ -6,16 +6,17 @@ use App\Http\Requests\CategoriaRequest;
 use App\Models\Categoria;
 use App\Models\Registro;
 use Exception;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
 
 class CategoriaController extends Controller
 {
     
-    public function index()
+    public function index(Request $request)
     {
         $categorias = Categoria::all();
 
-        return view('categoria.index')->with('categorias', $categorias);
+        return view('categoria.index')->with('categorias', $categorias)->with('path', $request->path());
     }
 
    

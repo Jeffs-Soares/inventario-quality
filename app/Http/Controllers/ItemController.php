@@ -7,15 +7,16 @@ use App\Models\Item;
 use App\Models\Registro;
 use Exception;
 use Illuminate\Support\Facades\Log;
+use Illuminate\Http\Request;
 
 class ItemController extends Controller
 {
 
-    public function index()
+    public function index(Request $request)
     {
         $items = Item::all();
 
-        return view('item.index')->with('items', $items);
+        return view('item.index')->with('items', $items)->with('path', $request->path());
     }
 
 

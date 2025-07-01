@@ -59,7 +59,7 @@
 </li>
 
 <li class="sidebar-item rounded-md">
-<a class="flex items-center p-2 text-sm hover:bg-gray-700 rounded-md" href="{{route('item.index')}}">
+<a class="flex items-center p-2 text-sm hover:bg-gray-700 rounded-md @if ($path == 'item') bg-gray-700 @endif" href="{{route('item.index')}}">
 <span class="material-icons mr-3">inventory_2</span>
                 Items
               </a>

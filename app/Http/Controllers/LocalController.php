@@ -12,11 +12,11 @@ use Illuminate\Support\Facades\Log;
 class LocalController extends Controller
 {
 
-    public function index()
+    public function index(Request $request)
     {
         $locais = Local::all();
 
-        return view('local.index')->with('locais', $locais);
+        return view('local.index')->with('locais', $locais)->with('path', $request->path());
     }
 
     public function create()

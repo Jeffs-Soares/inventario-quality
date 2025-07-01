@@ -43,7 +43,7 @@
               </a>
 </li>
 <li class="sidebar-item rounded-md">
-<a class="flex items-center p-2 text-sm hover:bg-gray-700 rounded-md" href="{{route('local.index')}}">
+<a class="flex items-center p-2 text-sm hover:bg-gray-700 rounded-md @if ($path == 'local') bg-gray-700 @endif" href="{{route('local.index')}}">
 <span class="material-icons mr-3">account_balance_wallet</span>
                 Locais
 
