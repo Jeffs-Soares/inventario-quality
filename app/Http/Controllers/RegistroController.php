@@ -12,28 +12,45 @@ use Illuminate\Support\Facades\Log;
 
 class RegistroController extends Controller
 {
-    
+
     public function index()
     {
         $registros = Registro::all();
         return view('registro.index')->with('registros', $registros);
     }
 
-   
+
     public function create()
     {
+
+        $locais = Local::all();
+        $categorias = Categoria::all();
+        $items = Item::all();
+
+        if ($locais->isEmpty()) {
+            return redirect()->back()->withInput()->with('error', 'Não existem locais cadastrados para continuar o registro.');
+        } 
+
+        if ($categorias->isEmpty()) {
+             return redirect()->back()->withInput()->with('error', 'Não existem categorias cadastrados para continuar o registro.');
+        } 
+
+        if ($items->isEmpty()) {
+             return redirect()->back()->withInput()->with('error', 'Não existem items cadastrados para continuar o registro.');
+        } 
+    
+
         return view('registro.create')->with('locais', Local::all())->with('categorias', Categoria::all())->with('items', Item::all());
     }
 
-   
+
     public function store(Request $request, Registro $registro)
     {
-         try {
+        try {
             $registro->fill($request->all());
             $registro->save();
 
             return redirect(route('registro.index'))->with('success', 'Registro cadastrado com sucesso!');
-
         } catch (Exception $e) {
 
             Log::error("Erro ao cadastrar o Registro ID {$registro->id}: " . $e->getMessage(), [
@@ -47,13 +64,10 @@ class RegistroController extends Controller
         }
     }
 
-    
-    public function show(string $id)
-    {
-        
-    }
 
-   
+    public function show(string $id) {}
+
+
     public function edit(Registro $registro)
     {
         return view('registro.edit')->with('registro', $registro)
@@ -62,7 +76,7 @@ class RegistroController extends Controller
             ->with('items', Item::all());
     }
 
-    
+
     public function update(Request $request, Registro $registro)
     {
         try {
@@ -70,7 +84,6 @@ class RegistroController extends Controller
             $registro->fill($request->all());
             $registro->save();
             return redirect(route('registro.index'))->with('success', 'Registro atualizado com sucesso!');
-
         } catch (Exception $e) {
             // Registra a exceção para depuração
             Log::error("Erro ao atualizar o registro ID {$registro->id}: " . $e->getMessage(), [
@@ -84,7 +97,7 @@ class RegistroController extends Controller
         }
     }
 
-    
+
     public function destroy(Registro $registro)
     {
         try {
